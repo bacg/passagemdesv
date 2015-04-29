@@ -1,0 +1,19 @@
+<div class="boxlogin">
+<center><h1 style="color:white;"> SISPERM </h1></center>
+<p style="color:white;">O usuário deverá solicitar sua senha no ETI - Desenvolvimento.</p>
+<p style="color:yellow;"><%= flash[:danger] %></p>
+<div id="aux">
+<%= form_for(:session, url: login_path) do |f| %>
+
+<label style="color:white; font-size:14px;"><strong>Usuario:</strong> </label><br />
+<%= f.text_field :login, :style => 'height:20px;' %><br /><br />
+<label style="color:white; font-size:14px;"><strong>Senha: </strong></label><br />
+<%= f.password_field :password, :style => 'height:20px;' %>
+<br /><br />
+<%= submit_tag 'Acessar', :style => 'width: 120px; border:none; background:#ccc; color:#000; float:right;' %>
+
+<% end %>
+	
+</div>	
+
+</div>

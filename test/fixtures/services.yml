@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  bk_web: false
+  bk_glpi: false
+  bk_diarias: false
+  bk_ldap: false
+  bkp_dns: false
+  bk_pagina: false
+  bk_mentor: false
+  bk_dhcp: false
+  bk_opera: false
+  bk_abacus: false
+  bk_sisconsig: false
+  bk_antivirus: false
+  bk_sigadaer: false
+  bk_email: false
+  bk_atis: false
+  ck_sala: false
+  ck_xen: false
+  ck_virtuais: false
+  ck_intraer: false
+  ck_internet: false
+  ck_pagina: false
+  ck_email: false
+  ck_sigadaer: false
+  ck_sims: false
+  dia_semana: MyString
+  alteracoes: MyText
+
+two:
+  user_id: 
+  bk_web: false
+  bk_glpi: false
+  bk_diarias: false
+  bk_ldap: false
+  bkp_dns: false
+  bk_pagina: false
+  bk_mentor: false
+  bk_dhcp: false
+  bk_opera: false
+  bk_abacus: false
+  bk_sisconsig: false
+  bk_antivirus: false
+  bk_sigadaer: false
+  bk_email: false
+  bk_atis: false
+  ck_sala: false
+  ck_xen: false
+  ck_virtuais: false
+  ck_intraer: false
+  ck_internet: false
+  ck_pagina: false
+  ck_email: false
+  ck_sigadaer: false
+  ck_sims: false
+  dia_semana: MyString
+  alteracoes: MyText

@@ -1,0 +1,49 @@
+<nav style="">
+  <ul class="menu">
+        <li style="padding:5px;">Bem vindo, <%= @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Adicionar Serviço', :controller => 'services', :action => 'new' %></li>
+        <li><a href="#">NPA</a></li>
+       
+        <li><a href="#">FAQ</a></li>
+        <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
+</ul>
+</nav>
+<p id="notice"><%= notice %></p>
+<br><br /><br /><br />
+<center><h1>Lista de Serviços</h1></center>
+<br>
+<div class="CSSTableGenerator" >
+<table>
+  <thead>
+    <tr>
+      <th>Militar</th>
+      
+      <th>Dia semana</th>
+      <th>Data</th>
+      <th>Alteracoes</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.user.name %></td>
+        
+        <td><%= service.dia_semana %></td>
+        <td><%= service.created_at.strftime('%d/%m/%Y') %></td>
+        <td><%= service.alteracoes %></td>
+        <td><%= link_to 'Abrir', service %></td>
+      
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<div style="float:left; margin-left:30px; ">
+<%= will_paginate @services, :previous_label => 'Anterior', :next_label => 'Próximo' %>
+</div>
+<br /><br /><br /><br />
+<%= link_to 'Adicionar passagem', new_service_path, :style => 'width: 120px; border:none; background:#ccc; color:#000; margin-left:30px; padding:8px;' %>

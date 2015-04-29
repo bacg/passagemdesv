@@ -1,0 +1,15 @@
+<nav style="">
+  <ul class="menu">
+        <li style="padding:5px;">Bem vindo, <%= @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Passagem de Serviço', :controller => 'services', :action => 'index' %></li>
+        <li><a href="#">NPA</a></li>
+       
+        <li><a href="#">FAQ</a></li>
+        <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
+</ul>
+</nav>
+
+
+<%= render 'form' %>
+
+

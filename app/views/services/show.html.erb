@@ -1,0 +1,268 @@
+<nav style="">
+  <ul class="menu">
+        <li style="padding:5px;">Bem vindo, <%= @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Passagem de Serviço', :controller => 'services', :action => 'index' %></li>
+        <li><a href="#">NPA</a></li>
+       
+        <li><a href="#">FAQ</a></li>
+        <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
+</ul>
+</nav>
+<br /><br /><br />
+
+<% 
+
+if @service.bk_web == ""
+  @service.bk_web == "Backup não disponivel para o dia do serviço!"
+end
+
+if @service.bk_glpi == ""
+  @service.bk_glpi == "Backup não disponivel para o dia do serviço!"
+end
+
+if @service.bk_diarias == ""
+  @service.bk_diarias == "Backup não disponivel para o dia do serviço!"
+end
+ %>
+
+<div class="form_service">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Militar:</strong>
+  <%= @service.user.name %>
+</p>
+<hr />
+<br />
+<fieldset style="padding:15px;">
+<legend>BACKUP DOS SERVIDORES</legend>
+<p>
+  <strong>WebProdução(16.202):</strong>
+  <% if @service.bk_web  %>
+  <%= "Backup Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>GLPI(16.70):</strong>
+  <% if @service.bk_glpi  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Diárias(16.85):</strong>
+  <% if @service.bk_diarias  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>LDAP(16.1):</strong>
+  <% if @service.bk_ldap  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>DNS(16.2):</strong>
+  <% if @service.bkp_dns  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Página BACG(16.203):</strong>
+  <% if @service.bk_pagina  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>MENTOR(16.71):</strong>
+  <% if @service.bk_mentor  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>DHCP(16.33):</strong>
+  <% if @service.bk_dhcp  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>OPERA(16.100):</strong>
+  <% if @service.bk_opera  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>ABACUS(16.34):</strong>
+  <% if @service.bk_abacus  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SISCONSIG SGH (16.32):</strong>
+  <% if @service.bk_sisconsig  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Antívirus(16.27):</strong>
+  <% if @service.bk_antivirus  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SIGADAER(16.8):</strong>
+  <% if @service.bk_sigadaer  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Email(16.6):</strong>
+  <% if @service.bk_email  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>ATIS(16.202):</strong>
+  <% if @service.bk_atis  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+</fieldset>
+<br />
+<fieldset style="padding:15px;">
+<legend>CHECK LIST</legend>
+<p>
+  <strong>SALA DOS SERVIDORES:</strong>
+  <% if @service.ck_sala  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SERVIDORES XEN:</strong>
+  <% if @service.ck_xen  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SERVIDORES VIRTUAIS:</strong>
+  <% if @service.ck_virtuais  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>INTRAER:</strong>
+  <% if @service.ck_intraer  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>INTERNET:</strong>
+  <% if @service.ck_internet  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>PÁGINA DA BACG:</strong>
+  <% if @service.ck_pagina  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>EMAIL:</strong>
+  <% if @service.ck_email  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SIGADAER:</strong>
+  <% if @service.ck_sigadaer  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= "Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>SIMS:</strong>
+  <% if @service.ck_sims  %>
+  <%= " Realizado." %>
+  <% else %>
+  <%= " Não Realizado." %>
+  <% end %>
+</p>
+
+<p>
+  <strong>DIA DA SEMANA:</strong>
+  <%= @service.dia_semana %>
+</p>
+
+<p>
+  <strong>ALTERAÇÕES:</strong>
+  <%= @service.alteracoes %>
+</p>
+</fieldset>
+</div>
+
+<%= link_to 'Voltar', services_path, :style => 'width: 120px; border:none; background:#ccc; color:#000; margin-left:30px; padding:8px;' %>

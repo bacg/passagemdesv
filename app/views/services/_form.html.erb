@@ -1,0 +1,185 @@
+<%= form_for(@service) do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% @service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form_service">
+
+<!-- Validando os dias da semana -->
+<fieldset style="padding:30px;">
+
+<legend>BACKUP DOS SERVIDORES</legend>
+<!-- Segunda-Feira -->
+<% if @t.strftime("%A") == "Segunda-Feira" %>
+ <div class="field">
+    <label>WEB PRODUÇÃO</label><br>
+    <%= f.check_box :bk_web %>
+  </div>
+  <div class="field">
+    <label>GLPI</label><br>
+    <%= f.check_box :bk_glpi %>
+  </div>
+
+  <% end %>
+
+<!-- Terça-Feira -->
+<% if @t.strftime("%A") == "Terça-Feira" %>
+
+
+  <div class="field">
+    <label>DIÁRIAS</label><br>
+    <%= f.check_box :bk_diarias %>
+  </div>
+  <div class="field">
+    <label>LDAP</label><br>
+    <%= f.check_box :bk_ldap %>
+  </div>
+  <div class="field">
+    <label>DNS</label><br>
+    <%= f.check_box :bkp_dns %>
+  </div>
+
+<% end %>
+
+<!-- Quarta-Feira -->
+<% if @t.strftime("%A") == "Quarta-Feira" %>
+<div class="field">
+    <label>PÁGINA BACG</label><br>
+    <%= f.check_box :bk_pagina %>
+  </div>
+  <div class="field">
+    <label>MENTOR</label><br>
+    <%= f.check_box :bk_mentor %>
+  </div>
+  <div class="field">
+    <label>DHCP</label><br>
+    <%= f.check_box :bk_dhcp %>
+  </div>
+
+  <% end %>
+<!-- Quinta-Feira -->
+<% if @t.strftime("%A") == "Quinta-Feira" %>
+
+<div class="field">
+    <label>OPERA</label><br>
+    <%= f.check_box :bk_opera %>
+  </div>
+  <div class="field">
+    <label>ABACUS</label><br>
+    <%= f.check_box :bk_abacus %>
+</div>
+
+
+<% end %>
+<!-- Sexta-Feira -->
+<% if @t.strftime("%A") == "Sexta-Feira" %>
+
+<div class="field">
+    <label>SISCONSIG SGH</label><br>
+    <%= f.check_box :bk_sisconsig %>
+  </div>
+  <div class="field">
+    <label>ANTÍVIRUS</label><br>
+    <%= f.check_box :bk_antivirus %>
+  </div>
+
+<% end %>
+
+
+<!-- Sábado -->
+<% if @t.strftime("%A") == "Sábado" %>
+<div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
+<% end %>
+
+<!-- Domingo -->
+<% if @t.strftime("%A") == "Domingo" %>
+
+<div class="field">
+    <label>EMAIL</label><br>
+    <%= f.check_box :bk_email %>
+  </div>
+  <div class="field">
+    <label>ATIS</label><br>
+    <%= f.check_box :bk_atis %>
+  </div>
+
+<% end %>
+
+</fieldset>
+
+<!-- Fim da validação -->
+  <div class="field">
+    <% @user = session[:user] %>
+    <% @user_logged = @user["id"] %>
+    <% puts @user_logged %>
+    <%= f.hidden_field :user_id, :value => @user_logged %>
+  </div>
+ 
+  
+  
+  <fieldset style="padding:30px;">
+  
+  <legend>CHECK LIST</legend>
+  
+  <div class="field">
+    <label>SALA DOS SERVIDORES</label><br>
+    <%= f.check_box :ck_sala %>
+  </div>
+  <div class="field">
+    <label>SERVIDORES XEN</label><br>
+    <%= f.check_box :ck_xen %>
+  </div>
+  <div class="field">
+    <label>SERVIDORES VIRTUAIS</label><br>
+    <%= f.check_box :ck_virtuais %>
+  </div>
+  <div class="field">
+    <label>INTRAER</label><br>
+    <%= f.check_box :ck_intraer %>
+  </div>
+  <div class="field">
+    <label>INTERNET</label><br>
+    <%= f.check_box :ck_internet %>
+  </div>
+  <div class="field">
+    <label>PÁGINA DA BACG</label><br>
+    <%= f.check_box :ck_pagina %>
+  </div>
+  <div class="field">
+    <label>EMAIL</label><br>
+    <%= f.check_box :ck_email %>
+  </div>
+  <div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :ck_sigadaer %>
+  </div>
+  <div class="field">
+    <label>SIMS</label><br>
+    <%= f.check_box :ck_sims %>
+  </div>
+
+  </fieldset>
+  <div class="field">
+    <label>Dia do Serviço:</label><br>
+    <%= f.text_field :dia_semana, :placeholder => @t.strftime("%A"), :style => 'color:black; font-weight:bold; color:black;' , :disabled => true %>
+    <%= f.hidden_field :dia_semana, :value => @t.strftime("%A")  %>
+  </div>
+  <div class="field">
+    <label><strong>Alterações ocorridas no serviço:</strong></label><br><br>
+    <%= f.text_area :alteracoes, :style => 'width:600px; height:250px;' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Cadastrar', :style => 'width:120px; height:20px; padding:1px; background:#556B2F; color:white; border:none;' %>
+  </div>
+<% end %>
+</div>
