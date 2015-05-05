@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
   	login = params[:login]
   	pass = params[:password]
-
+    
   	puts login
   	puts pass
 

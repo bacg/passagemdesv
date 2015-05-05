@@ -51,6 +51,8 @@ class ServicesController < ApplicationController
  
     @service = Service.new(service_params)
 
+    ContactMailer.contact_message(session[:user]).deliver_now
+    
     respond_to do |format|
       if @service.save
         format.html { redirect_to services_url, notice: 'Serviço cadastrado com sucesso!' }

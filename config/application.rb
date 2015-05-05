@@ -25,5 +25,16 @@ module Passagemsv
     config.i18n.default_locale = :"pt-BR"
     config.time_zone = "Brasilia"
     config.active_record.default_timezone = :local
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "10.52.132.28",
+      :port                 => 25,
+      :user_name            => 'same_consultas',
+      :password             => '@dmin$t1#',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true 
+    }
+# Para debug apenas, é melhor que a linha abaixo seja adicionado apenas no ambiente de desenvolvimento
+    config.action_mailer.raise_delivery_errors = true
   end
 end
