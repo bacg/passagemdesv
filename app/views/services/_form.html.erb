@@ -26,7 +26,10 @@
     <label>GLPI</label><br>
     <%= f.check_box :bk_glpi %>
   </div>
-
+<div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
   <% end %>
 
 <!-- Terça-Feira -->
@@ -45,7 +48,10 @@
     <label>DNS</label><br>
     <%= f.check_box :bkp_dns %>
   </div>
-
+<div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
 <% end %>
 
 <!-- Quarta-Feira -->
@@ -62,7 +68,10 @@
     <label>DHCP</label><br>
     <%= f.check_box :bk_dhcp %>
   </div>
-
+<div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
   <% end %>
 <!-- Quinta-Feira -->
 <% if @t.strftime("%A") == "Quinta-Feira" %>
@@ -75,7 +84,10 @@
     <label>ABACUS</label><br>
     <%= f.check_box :bk_abacus %>
 </div>
-
+<div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
 
 <% end %>
 <!-- Sexta-Feira -->
@@ -89,6 +101,10 @@
     <label>ANTÍVIRUS</label><br>
     <%= f.check_box :bk_antivirus %>
   </div>
+  <div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
 
 <% end %>
 
@@ -112,6 +128,10 @@
     <label>ATIS</label><br>
     <%= f.check_box :bk_atis %>
   </div>
+  <div class="field">
+    <label>SIGADAER</label><br>
+    <%= f.check_box :bk_sigadaer %>
+</div>
 
 <% end %>
 
@@ -133,39 +153,93 @@
   
   <div class="field">
     <label>SALA DOS SERVIDORES</label><br>
-    <%= f.check_box :ck_sala %>
+    
+    <%= f.check_box :cksalam %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksalat %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksalan %>
+    <label>20:00HS</label>
   </div>
+  <hr /><br />
   <div class="field">
     <label>SERVIDORES XEN</label><br>
-    <%= f.check_box :ck_xen %>
+    <%= f.check_box :ckxenm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckxent %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckxenn %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>SERVIDORES VIRTUAIS</label><br>
-    <%= f.check_box :ck_virtuais %>
+    <%= f.check_box :ckvirm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckvirt %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckvirn %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>INTRAER</label><br>
-    <%= f.check_box :ck_intraer %>
+    <%= f.check_box :ckintm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckintt %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckintn %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>INTERNET</label><br>
-    <%= f.check_box :ck_internet %>
+   <%= f.check_box :ckinterm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckintert %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckintern %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>PÁGINA DA BACG</label><br>
-    <%= f.check_box :ck_pagina %>
+    <%= f.check_box :ckpagem %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckpaget %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckpagen %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>EMAIL</label><br>
-    <%= f.check_box :ck_email %>
+    <%= f.check_box :ckemailm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckemailt %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :ckemailn %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>SIGADAER</label><br>
-    <%= f.check_box :ck_sigadaer %>
+    <%= f.check_box :cksigm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksigt %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksign %>
+    <label>20:00HS</label>
   </div>
+   <hr /><br />
   <div class="field">
     <label>SIMS</label><br>
-    <%= f.check_box :ck_sims %>
+    <%= f.check_box :cksimm %>
+    <label>06:30HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksimt %>
+    <label>13:00HS</label>&nbsp;&nbsp;&nbsp;
+    <%= f.check_box :cksimn %>
+    <label>20:00HS</label>
   </div>
 
   </fieldset>

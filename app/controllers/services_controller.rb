@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
       else
       redirect_to(login_path) 
     end
-    @services = Service.paginate(:page => params[:page], :per_page => 2)
+    @services = Service.paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
   end
 
   # GET /services/1
@@ -51,7 +51,8 @@ class ServicesController < ApplicationController
  
     @service = Service.new(service_params)
 
-    ContactMailer.contact_message(session[:user]).deliver_now
+    ServiceNotifier.send_service_email(session[:user]).deliver
+    
     
     respond_to do |format|
       if @service.save
@@ -96,6 +97,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:user_id, :bk_web, :bk_glpi, :bk_diarias, :bk_ldap, :bkp_dns, :bk_pagina, :bk_mentor, :bk_dhcp, :bk_opera, :bk_abacus, :bk_sisconsig, :bk_antivirus, :bk_sigadaer, :bk_email, :bk_atis, :ck_sala, :ck_xen, :ck_virtuais, :ck_intraer, :ck_internet, :ck_pagina, :ck_email, :ck_sigadaer, :ck_sims, :dia_semana, :alteracoes)
+      params.require(:service).permit(:user_id, :bk_web, :bk_glpi, :bk_diarias, :bk_ldap, :bkp_dns, :bk_pagina, :bk_mentor, :bk_dhcp, :bk_opera, :bk_abacus, :bk_sisconsig, :bk_antivirus, :bk_sigadaer, :bk_email, :bk_atis, :ck_sala, :ck_xen, :ck_virtuais, :ck_intraer, :ck_internet, :ck_pagina, :ck_email, :ck_sigadaer, :ck_sims, :dia_semana, :alteracoes, :cksalam, :cksalat, :cksalan, :ckxenm, :ckxent, :ckxenn, :ckvirm, :ckvirt, :ckvirn, :ckintm, :ckintt, :ckintn, :ckpagem, :ckpaget, :ckpagen, :ckinterm, :ckintert, :ckintern, :ckemailm, :ckemailt, :ckemailn, :cksigm, :cksigt, :cksign, :cksimm, :cksimt, :cksimn )
     end
 end

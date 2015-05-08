@@ -25,12 +25,14 @@ module Passagemsv
     config.i18n.default_locale = :"pt-BR"
     config.time_zone = "Brasilia"
     config.active_record.default_timezone = :local
+   
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address              => "10.52.132.28",
-      :port                 => 25,
-      :user_name            => 'same_consultas',
-      :password             => '@dmin$t1#',
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :user_name            => 'antonio.eschola',
+      :password             => 'rub32912289',
+      :domain               => 'gmail.com',
       :authentication       => 'plain',
       :enable_starttls_auto => true 
     }
