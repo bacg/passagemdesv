@@ -91,4 +91,18 @@
 <%= will_paginate @services, :previous_label => 'Anterior', :next_label => 'Próximo' %>
 </div>
 <br /><br /><br /><br />
-<%= link_to 'Adicionar passagem', new_service_path, :style => 'width: 120px; border:none; background:#ccc; color:#000; margin-left:30px; padding:8px;' %>
+
+<%
+    
+    @usuario = session[:type]
+
+    @tipo_user = Type.where(:id => @usuario).first
+    puts @tipo_user.id
+   ## Validando usuario para pegar menu correspondente
+    if(@tipo_user.id == 2)
+   
+   link_to 'Adicionar passagem', new_service_path, :style => 'width: 120px; border:none; background:#ccc; color:#000; margin-left:30px; padding:8px;'
+    end
+
+
+%>
