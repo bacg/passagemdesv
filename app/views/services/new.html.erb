@@ -1,13 +1,57 @@
+<%
+    
+    @usuario = session[:type]
+
+    @tipo_user = Type.where(:id => @usuario).first
+    puts @tipo_user.id
+   ## Validando usuario para pegar menu correspondente
+    if(@tipo_user.id == 2)
+      
+      %>
 <nav style="">
-  <ul class="menu">
-        <li style="padding:5px;">Bem vindo, <%= @user_logged %>&nbsp;&nbsp;&nbsp;</li>
-        <li><%= link_to 'Passagem de Serviço', :controller => 'services', :action => 'index' %></li>
+<ul class="menu">
+        <li style="padding:5px;">Bem vindo, <% @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Adicionar Serviço', :controller => 'services', :action => 'new' %></li>
         <li><a href="#">NPA</a></li>
        
         <li><a href="#">FAQ</a></li>
         <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
 </ul>
 </nav>
+      <%
+    end
+
+    if(@tipo_user.id == 1)
+
+%>
+<nav style="">
+<ul class="menu">
+        <li style="padding:5px;">Bem vindo, <% @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Usuários', :controller => 'users', :action => 'index' %></li>
+        <li><%= link_to 'Serviços', :controller => 'services', :action => 'new' %></li>
+       
+        <li><a href="#">FAQ</a></li>
+        <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
+</ul>
+</nav>
+      <%
+    end
+
+    if(@tipo_user.id == 3)
+
+%>
+<nav style="">
+<ul class="menu">
+        <li style="padding:5px;">Bem vindo, <% @user_logged %>&nbsp;&nbsp;&nbsp;</li>
+        <li><%= link_to 'Usuários', :controller => 'users', :action => 'index' %></li>
+        <li><%= link_to 'Serviços', :controller => 'services', :action => 'new' %></li>
+        <li><%= link_to 'Sair', logout_path, method: :delete, data: { confirm: 'Tem certeza?' } %></li>               
+</ul>
+</nav>
+      <%
+
+    end
+%>
 
 
 <%= render 'form' %>

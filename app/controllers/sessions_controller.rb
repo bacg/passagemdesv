@@ -16,7 +16,10 @@ class SessionsController < ApplicationController
   	if user
   		puts "validei usuario"
   		session[:user] = user
-  		puts user.id
+      @tipo_usuario = Type.where(:id => user.type_id).first
+      session[:type]  = @tipo_usuario.id 
+      
+  		puts session[:type]
   		#log_in user
   		redirect_to(:controller => 'home', :action => 'index')
 
