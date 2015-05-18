@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507174717) do
+ActiveRecord::Schema.define(version: 20150513181218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,42 @@ ActiveRecord::Schema.define(version: 20150507174717) do
     t.text     "alteracoes"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.boolean  "cksalam"
+    t.boolean  "cksalat"
+    t.boolean  "cksalan"
+    t.boolean  "ckxenm"
+    t.boolean  "ckxent"
+    t.boolean  "ckxenn"
+    t.boolean  "ckvirm"
+    t.boolean  "ckvirt"
+    t.boolean  "ckvirn"
+    t.boolean  "ckintm"
+    t.boolean  "ckintt"
+    t.boolean  "ckintn"
+    t.boolean  "ckpagem"
+    t.boolean  "ckpaget"
+    t.boolean  "ckpagen"
+    t.boolean  "ckinterm"
+    t.boolean  "ckintert"
+    t.boolean  "ckintern"
+    t.boolean  "ckemailm"
+    t.boolean  "ckemailt"
+    t.boolean  "ckemailn"
+    t.boolean  "cksigm"
+    t.boolean  "cksigt"
+    t.boolean  "cksign"
+    t.boolean  "cksimm"
+    t.boolean  "cksimt"
+    t.boolean  "cksimn"
   end
 
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
+
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
@@ -58,7 +91,11 @@ ActiveRecord::Schema.define(version: 20150507174717) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "type_id"
   end
 
+  add_index "users", ["type_id"], name: "index_users_on_type_id", using: :btree
+
   add_foreign_key "services", "users"
+  add_foreign_key "users", "types"
 end
