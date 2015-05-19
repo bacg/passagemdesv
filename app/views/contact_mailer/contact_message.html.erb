@@ -1,12 +1,385 @@
-<h1>Passagem de Serviço do Permanência ao ETI</h1>
-<h2>Militar: <%= @militar %></h2>
-<h2>Data de envio: <%= Time.now.strftime("%d/%m/%Y %H:%M") %></h2>
+<style type="text/css">
+.form_service{
+	width: 600px;
+	border: 1px solid #ccc;
+	float: left;
+	margin-left: 25%;
+	padding:30px;	
+}
+</style>
 
-<p><strong>Teste</p>
-
-<p><strong></p>
 
 
 
-<p><strong>Mensagem:</strong></p>
+<%
+if @service.bk_web == ""
+  @service.bk_web == "Backup não disponivel para o dia do serviço!"
+end
+
+if @service.bk_glpi == ""
+  @service.bk_glpi == "Backup não disponivel para o dia do serviço!"
+end
+
+if @service.bk_diarias == ""
+  @service.bk_diarias == "Backup não disponivel para o dia do serviço!"
+end
+ %>
+
+<div class="form_service">
+<h4>Passagem de Serviço do Permanência ao ETI</h4>
+<hr />
+<br />
+<% @militar = User.find(@service.user_id) %>
+<fieldset style="padding:15px;">
+<h4>Militar: <%= @militar.name  %></h4><hr />
+<h4>Data da passagem: <%= Time.now.strftime("%d/%m/%Y %H:%M") %></h4><hr />
+<legend>BACKUP DOS SERVIDORES</legend>
+<p>
+  <strong>WebProdução(16.202):</strong>
+  <% if @service.bk_web  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>GLPI(16.70):</strong>
+  <% if @service.bk_glpi  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>Diárias(16.85):</strong>
+  <% if @service.bk_diarias  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>LDAP(16.1):</strong>
+  <% if @service.bk_ldap  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>DNS(16.2):</strong>
+  <% if @service.bkp_dns  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>Página BACG(16.203):</strong>
+  <% if @service.bk_pagina  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>MENTOR(16.71):</strong>
+  <% if @service.bk_mentor  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>DHCP(16.33):</strong>
+  <% if @service.bk_dhcp  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>OPERA(16.100):</strong>
+  <% if @service.bk_opera  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>ABACUS(16.34):</strong>
+  <% if @service.bk_abacus  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SISCONSIG SGH (16.32):</strong>
+  <% if @service.bk_sisconsig  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>Antívirus(16.27):</strong>
+  <% if @service.bk_antivirus  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SIGADAER(16.8):</strong>
+  <% if @service.bk_sigadaer  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>Email(16.6):</strong>
+  <% if @service.bk_email  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>ATIS(16.202):</strong>
+  <% if @service.bk_atis  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+</fieldset>
+<br />
+<fieldset style="padding:15px;">
+<legend>CHECK LIST</legend>
+<p>
+  <strong>SALA DOS SERVIDORES:</strong>
+  <% if @service.cksalam  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.cksalat  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.cksalan  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SERVIDORES XEN:</strong>
+  <% if @service.ckxenm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckxent  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckxenn  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SERVIDORES VIRTUAIS:</strong>
+  <% if @service.ckvirm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckvirt  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckvirn  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>INTRAER:</strong>
+  <% if @service.ckintm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckintt  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckintn  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>INTERNET:</strong>
+  <% if @service.ckinterm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckintert  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckintern  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>PÁGINA DA BACG:</strong>
+  <% if @service.ckpagem  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckpaget  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckpagen  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>EMAIL:</strong>
+  <% if @service.ckemailm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.ckemailt  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.ckemailn  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SIGADAER:</strong>
+  <% if @service.cksigm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.cksigt  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.cksign  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>SIMS:</strong>
+  <% if @service.cksimm  %>
+  <%= " Manhã: Sim" %>
+  <% else %>
+  <%= "Manhã: Não" %>
+  <% end %>
+    <% if @service.cksimt  %>
+  <%= "| Tarde: Sim" %>
+  <% else %>
+  <%= "| Tarde: Não" %>
+  <% end %>
+  <% if @service.cksimn  %>
+  <%= "| Noite: Sim" %>
+  <% else %>
+  <%= "| Noite: Não" %>
+  <% end %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>DIA DA SEMANA:</strong>
+  <%= @service.dia_semana %>
+</p>
+<hr />
+<br>
+<p>
+  <strong>ALTERAÇÕES:</strong>
+  <%= @service.alteracoes %>
+</p>
+</fieldset>
+<center><p>Seção de Desenvolvimento - ETI | BACG</p></center>
+</div>
+
+
+
 <p></p>

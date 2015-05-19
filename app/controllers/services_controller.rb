@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
       else
       redirect_to(login_path) 
     end
-    @services = Service.paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
+    @services = Service.search(params[:search]).paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
   end
 
   # GET /services/1
@@ -51,12 +51,21 @@ class ServicesController < ApplicationController
  
     @service = Service.new(service_params)
 
-    ServiceNotifier.send_service_email(session[:user]).deliver
     
     
     respond_to do |format|
       if @service.save
-        format.html { redirect_to services_url, notice: 'Serviço cadastrado com sucesso!' }
+        @user = session[:user]
+        @user_nome = @user["nome"]
+        
+        @user_email = @user["email"]
+        contato = @user_nome
+        email = @user_email
+        puts @service.id
+        service = Service.find(@service.id)
+        ContactMailer.contact_message(contato, service, email).deliver
+        
+        format.html { redirect_to root_path, notice: 'Serviço cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }

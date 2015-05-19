@@ -1,10 +1,11 @@
 class ContactMailer < ApplicationMailer
-	default :from => 'same_consultas@bacg.aer.mil.br'
+  default :from => 'sisperm@bacg.intraer'
 
-	def contact_message(contact)
-		@user = contact
-		@militar = @user["name"]
-		@contact = contact
-		mail(:to => 'ricardosouzaaf@bacg.intraer', :subject => 'SISPERM - Passagem de Serviço')		
-	end
+  def contact_message(contato, service, email_permanencia)
+    @contact = contato
+    puts "Contato: #{contato}" 
+
+    @service = service
+    mail(:to => 'sisperm@bacg.intraer', :cc => 'ricardosouzaaf@bacg.intraer',:subject => 'SISPERM - Passagem de serviço ao ETI')
+  end
 end

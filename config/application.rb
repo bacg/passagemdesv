@@ -26,17 +26,17 @@ module Passagemsv
     config.time_zone = "Brasilia"
     config.active_record.default_timezone = :local
    
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :user_name            => 'antonio.eschola',
-      :password             => 'rub32912289',
-      :domain               => 'gmail.com',
-      :authentication       => 'plain',
-      :enable_starttls_auto => true 
-    }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :address              => "10.152.16.6",
+  :port                 => 25,
+  :domain               => 'bacg.intraer',
+  #:user_name            => 'ricardosouzabacg@gmail.com',
+  #:password             => 'rub32912289',
+  #:authentication       => 'plain',
+  :enable_starttls_auto => true 
+}
 # Para debug apenas, é melhor que a linha abaixo seja adicionado apenas no ambiente de desenvolvimento
-    config.action_mailer.raise_delivery_errors = true
+config.action_mailer.raise_delivery_errors = true
   end
 end
