@@ -82,7 +82,7 @@ end
 <fieldset style="padding:15px;">
 <legend>BACKUP DOS SERVIDORES</legend>
 <p>
-  <strong>WebProdução(16.202):</strong>
+  <strong>Ordem de Serviço EIE(16.202):</strong>
   <% if @service.bk_web  %>
   <%= "Backup Realizado." %>
   <% else %>
@@ -224,6 +224,14 @@ end
 <p>
   <strong>ATIS(16.202):</strong>
   <% if @service.bk_atis  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
+<p>
+  <strong>NÁGIOS(16.80):</strong>
+  <% if @service.bk_nagios  %>
   <%= "Backup Realizado." %>
   <% else %>
   <%= "Backup não Realizado." %>

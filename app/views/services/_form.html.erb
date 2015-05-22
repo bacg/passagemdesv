@@ -19,7 +19,7 @@
 <!-- Segunda-Feira -->
 <% if @t.strftime("%A") == "Segunda-Feira" %>
  <div class="field">
-    <label>WEB PRODUÇÃO</label><br>
+    <label>Ordem de Serviço EIE</label><br>
     <%= f.check_box :bk_web %>
   </div>
   <div class="field">
@@ -27,7 +27,7 @@
     <%= f.check_box :bk_glpi %>
   </div>
 <div class="field">
-    <label>SIGADAER</label><br>
+    <label>Moodle</label><br>
     <%= f.check_box :bk_sigadaer %>
 </div>
   <% end %>
@@ -45,7 +45,7 @@
     <%= f.check_box :bk_ldap %>
   </div>
   <div class="field">
-    <label>DNS</label><br>
+    <label>Nágios</label><br>
     <%= f.check_box :bkp_dns %>
   </div>
 <div class="field">
@@ -64,10 +64,11 @@
     <label>MENTOR</label><br>
     <%= f.check_box :bk_mentor %>
   </div>
+  <!--
   <div class="field">
     <label>DHCP</label><br>
     <%= f.check_box :bk_dhcp %>
-  </div>
+  </div>-->
 <div class="field">
     <label>SIGADAER</label><br>
     <%= f.check_box :bk_sigadaer %>
@@ -114,18 +115,23 @@
 <div class="field">
     <label>SIGADAER</label><br>
     <%= f.check_box :bk_sigadaer %>
+
 </div>
+<div class="field">
+    <label>DHCP</label><br>
+    <%= f.check_box :bk_dhcp %>
+  </div>
 <% end %>
 
 <!-- Domingo -->
 <% if @t.strftime("%A") == "Domingo" %>
 
 <div class="field">
-    <label>EMAIL</label><br>
+    <label>EMAIL INTRAER</label><br>
     <%= f.check_box :bk_email %>
   </div>
   <div class="field">
-    <label>ATIS</label><br>
+    <label>DNS</label><br>
     <%= f.check_box :bk_atis %>
   </div>
   <div class="field">

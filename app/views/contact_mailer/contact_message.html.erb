@@ -182,6 +182,14 @@ end
   <%= "Backup não Realizado." %>
   <% end %>
 </p>
+<p>
+  <strong>Nágios(16.80):</strong>
+  <% if @service.bk_nagios  %>
+  <%= "Backup Realizado." %>
+  <% else %>
+  <%= "Backup não Realizado." %>
+  <% end %>
+</p>
 </fieldset>
 <br />
 <fieldset style="padding:15px;">
