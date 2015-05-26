@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150513181218) do
     t.boolean  "cksimm"
     t.boolean  "cksimt"
     t.boolean  "cksimn"
+    t.boolean  "bk_nagios"
   end
 
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
